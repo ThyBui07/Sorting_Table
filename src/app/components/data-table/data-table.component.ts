@@ -27,14 +27,12 @@ export class DataTableComponent implements OnInit {
   ngOnInit() {
     //subscribe search input from searchbar//language service
     this.languageService.searchTerm$.subscribe(term => {
-      this.searchTerm= term;
-      console.log(this.searchTerm);
+      this.searchTerm = term;
     });
     // subscribe api response from language service
     this.languageService.getLangList().subscribe(res => {
       this.languageList = res;
       this.languageList = this.sortingPipe.transform(this.languageList, 'name', 'code');
-      console.log(this.languageList);
     });
 
     //pagination

@@ -8,6 +8,6 @@
       </option>
     </select>
     <input class="di-l w-100 mv3-l mv2 w-50-l ml3-l br2 ph2 h2 bg-white b--black-20 ba softShadow" type="text" placeholder="Search"
-      (keyup)="onKey($event)">
+      (keyup)="onKey($event.target.value)">
   </form>
 </div>

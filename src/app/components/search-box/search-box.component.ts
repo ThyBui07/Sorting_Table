@@ -18,8 +18,8 @@ export class SearchBoxComponent implements OnInit {
   ngOnInit() {
   }
 
-  onKey(event: any) {
-    this.languageService.receiveAndSend(event.target.value);
+  onKey(value: string ) {
+    this.languageService.receiveAndSend(value);
   }
 
   onChange(selectedValue: string){
