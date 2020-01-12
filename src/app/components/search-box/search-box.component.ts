@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Subject } from 'rxjs';
 import { LanguageService } from 'src/app/services/language.service';
-import { ThrowStmt } from '@angular/compiler';
 
 @Component({
   selector: 'search-box-component',
@@ -10,24 +8,21 @@ import { ThrowStmt } from '@angular/compiler';
 })
 export class SearchBoxComponent implements OnInit {
   public filterTypes = [
-    {value: '' , display: ''},
+    {value: '' , display: 'Both Writing Direction'},
     {value:'ltr', display:'Left to Right'},
-   {value:'rtl', display:'Right to Left'},
+    {value:'rtl', display:'Right to Left'},
    ];
 
-  constructor(public languageService: LanguageService) {
-  }
+  constructor(public languageService: LanguageService) {}
 
   ngOnInit() {
   }
 
-  onKey(event: any) { // without type info
-    console.log(event.target.value);
+  onKey(event: any) {
     this.languageService.receiveAndSend(event.target.value);
   }
 
-  filterChanged(selectedValue:string){
-    console.log(selectedValue);
+  onChange(selectedValue: string){
     this.languageService.receiveAndSend(selectedValue);
  }
 

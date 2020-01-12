@@ -7,19 +7,20 @@ import { Observable, Subject } from 'rxjs';
   providedIn: 'root'
 })
 export class LanguageService {
+  BASE_URL = 'https://demo.transfluent.com/languages.json'
   searchTerm$ = new Subject<string>();
 
   constructor(private http: HttpClient) {}
 
   getLangList(): Observable<any> {
-    return this.http.get<{response:any}>('https://demo.transfluent.com/languages.json')
-        .pipe(map(data => data.response.map(lang => {
-          const firstKey = Object.keys(lang)[0];
+    return this.http.get<{response:any}>(this.BASE_URL)
+      .pipe(map(data => data.response.map(lang => {
+        const firstKey = Object.keys(lang)[0];
         return lang[firstKey];
-        })))
+      })));
   }
 
-  //receive data from search bar and pass to table
+  //receive data and transform data
   receiveAndSend(term: string) {
     this.searchTerm$.next(term);
     return this.searchTerm$.asObservable();

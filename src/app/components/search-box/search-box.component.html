@@ -1,28 +1,13 @@
-<div id="searchBox" class="w-100 w-90-ns h4 flex-column center mh5 mv4 dn db-ns">
-    <h3 class="tc pv3 mv0">Real Time Search</h3>
-    <form class="flex items-center mh6-ns">
-
-        <select class="di-ns w-100 w-40-ns ba h2 mh5-ns b--black-20 bg-white" (change)="filterChanged($event.target.value)">
-            <option *ngFor="let type of filterTypes" [value]="type.value">{{type.display}}
-            </option>
-        </select>
-
-        <input type="text" class="di-ns w-100 w-50-ns ba h2 mh3-ns b--black-20 f6" placeholder="Search" (keyup)="onKey($event)">
-        <!-- <input type="email" class="db w-100 pa2 mt2 br2 b--black-20 ba f6" id="exampleInputEmail1" placeholder="Email"> -->
-          <!-- <a class="mh4 tc w-100 w-20-ns f6 link dim br1 ph3 pv2 mb2 dib white bg-near-black" href="#0">Search</a> -->
-
-    </form>
-</div>
-
-<!-- mobile -->
-<div id="searchBoxMobile" class="shadow-5 w-100 w-90-ns h4 center mh5 mv4 dn-m dn-l">
-        <form class="h4 ph5-ns flex-column items-center">
-              <input type="email" class="di-ns w-100 pa2 br2 b--black-20 ba f6" placeholder="Search">
-              <select class="di w-100 mh3-ns h2 ba b--black-20 bg-white">
-                  <option></option>
-                  <option>Left to right</option>
-                  <option>Right to left</option>
-              </select>
-              <a class="mh4 tc w-100 f6 link dim br1 ph3 pv2 mb2 dib white bg-near-black" href="#0">Search</a>
-        </form>
+<div id="searchBox" class="w-100 w-90-ns flex-column center mh5 mv4">
+  <h2 class="tc pv3 pt4-l mv0">Real Time Search</h2>
+  <form class="inline-flex-l center w-90 w-75-ns items-center mh6-l mh5-m">
+    <select class="di-l mv3-l mv2 w-100 w-50-l mr3-l h2 b--black-20 bg-white ba softShadow"
+      (change)="onChange($event.target.value)">
+      <option *ngFor="let type of filterTypes" [value]="type.value">
+        {{type.display}}
+      </option>
+    </select>
+    <input class="di-l w-100 mv3-l mv2 w-50-l ml3-l br2 ph2 h2 bg-white b--black-20 ba softShadow" type="text" placeholder="Search"
+      (keyup)="onKey($event)">
+  </form>
 </div>

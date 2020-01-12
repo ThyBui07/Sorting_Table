@@ -12,20 +12,19 @@ import { SortingPipe } from 'src/app/pipes/sort.pipe';
 })
 export class DataTableComponent implements OnInit {
   languageList = [];
-
   //search function
   searchTerm: string;
   searchRes: any =[];
-
   //sort
   isReverse: boolean = false;
-
   //pagination
   totalItemsCount: number;
   config: any;
   public responsive: boolean = true;
 
-  constructor(public languageService: LanguageService, public sortingPipe: SortingPipe) {
+  constructor(public languageService: LanguageService, public sortingPipe: SortingPipe) {}
+
+  ngOnInit() {
     //subscribe search input from searchbar//language service
     this.languageService.searchTerm$.subscribe(term => {
       this.searchTerm= term;
@@ -38,8 +37,6 @@ export class DataTableComponent implements OnInit {
       console.log(this.languageList);
     });
 
-    // this.languageService.getLangList().subscribe();
-
     //pagination
     this.config = {
       itemsPerPage: 5,
@@ -48,24 +45,19 @@ export class DataTableComponent implements OnInit {
     };
   }
 
-  ngOnInit() {
-
-  }
-
   //pagination
   pageChanged(event){
     this.config.currentPage = event;
   }
 
-  sort() {
+  sort(option: string) {
+    const reverseOption = "-" + option;
     this.isReverse = !this.isReverse;
-    console.log(this.isReverse);
     if (this.isReverse) {
-      this.languageList = this.sortingPipe.transform(this.languageList, '-name', '-code');
+      this.languageList = this.sortingPipe.transform(this.languageList, reverseOption );
     }
     else {
-      this.languageList = this.sortingPipe.transform(this.languageList, 'name', 'code');
-      console.log(this.languageList);
+      this.languageList = this.sortingPipe.transform(this.languageList, option );
     }
   }
 

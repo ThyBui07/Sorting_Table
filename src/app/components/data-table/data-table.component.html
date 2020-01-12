@@ -1,49 +1,32 @@
 <div id="dataTable" class="w-100 w-90-ns h-auto center mh5 mv4">
-
-    <h3 class="tc ph5-ns pt4 mb2">Result</h3>
-
-    <!-- table -->
-
-    <div class="pa3 pt4-ns">
-        <table class="f6 w-100 mw8 center tc" cellspacing="0">
-          <thead dt-row-fixed>
-            <tr>
-              <th class="pointer fw6 bb b--black-20 pb3 pr3" (click)="sort()">
-                Language
-                <i class="fa"
-                [ngClass]="{'fa-sort-desc': isReverse, 'fa-sort-asc': !isReverse  }"></i>
-              </th>
-              <th class="pointer fw6 bb b--black-20 pb3 pr3" (click)="sort()">
-                  Language Code
-                  <i class="fa"
-                  [ngClass]="{'fa-sort-desc': isReverse, 'fa-sort-asc': !isReverse  }"></i>
-                </th>
-              <th class="fw6 bb b--black-20 pb3 pr3">Writing Direction</th>
-            </tr>
-          </thead>
-          <tbody class="lh-copy">
-            <tr *ngFor="let lang of languageList | searching: searchTerm  | paginate: config">
-              <td class="w-25 pv3 pr3 bb b--black-20">{{ lang.name }}</td>
-              <td class="w-25 pv3 pr3 bb b--black-20">{{ lang.code }}</td>
-              <td class="w-25 pv3 pr3 bb b--black-20">{{ lang.dir }}</td>
-            </tr>
-          </tbody>
-        </table>
+  <h2 class="tc ph5-ns pt4 mb2">Result</h2>
+  <div class="pa3 h-60 pt4-ns">
+    <table class="f6 w-100 mw8 center tc" cellspacing="0">
+      <thead dt-row-fixed>
+        <tr>
+          <th class="pointer fw6 bb b--black-20 pv3 hover-bg-light-gray" (click)="sort('name')">
+            Language
+            <i class="fa" [ngClass]="{'fa-long-arrow-down': !isReverse, 'fa-long-arrow-up': isReverse}"></i>
+          </th>
+          <th class="pointer fw6 bb b--black-20 pv3 hover-bg-light-gray" (click)="sort('code')">
+            Language Code
+            <i class="fa" [ngClass]="{'fa-long-arrow-down': !isReverse, 'fa-long-arrow-up': isReverse}"></i>
+          </th>
+          <th class="pointer fw6 bb b--black-20 pv3 hover-bg-light-gray" (click)="sort('dir')">
+            Writing Direction
+            <i class="fa" [ngClass]="{'fa-long-arrow-down': !isReverse, 'fa-long-arrow-up': isReverse}"></i>
+          </th>
+        </tr>
+      </thead>
+      <tbody class="lh-copy">
+        <tr class="hover-bg-light-gray" *ngFor="let lang of languageList | searching: searchTerm  | paginate: config">
+          <td class="w-25 pv3 pr3 bb b--black-20 ">{{ lang.name }}</td>
+          <td class="w-25 pv3 pr3 bb b--black-20">{{ lang.code }}</td>
+          <td class="w-25 pv3 pr3 bb b--black-20">{{ lang.dir }}</td>
+        </tr>
+      </tbody>
+    </table>
   </div>
-
-    <pagination-controls class="paginationBar mw6 pv3 center dn db-ns" (pageChange)="pageChanged($event)" [responsive]="responsive"></pagination-controls>
+  <pagination-controls class="paginationBar mw6 pv3 center dn db-ns" (pageChange)="pageChanged($event)"
+    [responsive]="responsive"></pagination-controls>
 </div>
-
-
-<!-- pagination mobile -->
-    <!-- <div class="mw8 center db dn-ns">
-        <nav class="cf pb3 pr3" data-name="pagination-next-prev">
-            <a class="fr dib link dim black f5 b pa2 ba ml2 br-100 no-underline black bg-animate hover-bg-black hover-white" href="#" title="Next">
-                <i class="fa fa-long-arrow-right"></i>
-            </a>
-          <a class="fr dib link dim black f5 b pa2 ba mr2 br-100 no-underline black bg-animate hover-bg-black hover-white" href="#" title="Previous">
-              <i class="fa fa-long-arrow-left"></i>
-          </a>
-
-        </nav>
-    </div> -->

@@ -12,7 +12,6 @@ import { AppComponent } from './app.component';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { SearchBoxComponent } from './components/search-box/search-box.component';
 import { DataTableComponent } from './components/data-table/data-table.component';
-import { FooterComponent } from './components/footer/footer.component';
 
 //pipes
 import { SearchingPipe } from './pipes/searching.pipe';
@@ -24,7 +23,6 @@ import { SortingPipe } from './pipes/sort.pipe';
     NavBarComponent,
     SearchBoxComponent,
     DataTableComponent,
-    FooterComponent,
     SearchingPipe,
     SortingPipe,
   ],
@@ -41,7 +39,6 @@ import { SortingPipe } from './pipes/sort.pipe';
     NavBarComponent,
     SearchBoxComponent,
     DataTableComponent,
-    FooterComponent,
   ],
   providers: [],
   bootstrap: [AppComponent]
