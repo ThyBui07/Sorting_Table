@@ -1,0 +1,14 @@
+.paginationBar::ng-deep .ngx-pagination .current {
+  border: 2px black solid!important;
+  background: #f5f6fa!important;
+  color: black!important;
+  font-weight: bold;
+}
+
+.paginationBar::ng-deep .ngx-pagination button {
+  background: blue!important;
+}
+
+.pointer{
+  cursor: pointer;
+}

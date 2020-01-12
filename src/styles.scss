@@ -1,1 +1,44 @@
 /* You can add global styles to this file, and also import other style files */
+@mixin box {
+  background-color: #f5f6fa;
+  border-radius: 10px;
+}
+
+@mixin shadowBox {
+  -webkit-box-shadow: 6px 7px 30px 7px rgba(0,0,0,0.39);
+-moz-box-shadow: 6px 7px 30px 7px rgba(0,0,0,0.39);
+box-shadow: 6px 7px 30px 7px rgba(0,0,0,0.39);
+}
+
+html {
+  height: 100%;
+}
+body {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  font-family: 'Montserrat', sans-serif;
+  overflow: auto!important;
+  background: linear-gradient(90deg, #4b6cb7 0%, #182848 100%);
+ }
+
+#searchBox {
+  @include box;
+  @include shadowBox;
+}
+
+#searchBoxMobile {
+  @include box;
+}
+
+#dataTable {
+  @include box;
+  @include shadowBox;
+
+}
+
+.bgWhite {
+  background-color: #f5f6fa;
+}
+
+
