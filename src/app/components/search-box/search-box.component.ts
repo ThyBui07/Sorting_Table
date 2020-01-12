@@ -9,8 +9,8 @@ import { LanguageService } from 'src/app/services/language.service';
 export class SearchBoxComponent implements OnInit {
   public filterTypes = [
     {value: '' , display: 'Both Writing Direction'},
-    {value:'ltr', display:'Left to Right'},
-    {value:'rtl', display:'Right to Left'},
+    {value:'left to right', display:'Left to Right'},
+    {value:'right to left', display:'Right to Left'},
    ];
 
   constructor(public languageService: LanguageService) {}

@@ -32,6 +32,17 @@ export class DataTableComponent implements OnInit {
     // subscribe api response from language service
     this.languageService.getLangList().subscribe(res => {
       this.languageList = res;
+
+      //change the writing-direction-code
+      this.languageList.forEach(lang => {
+        if (lang.dir == 'ltr') {
+          lang.dir = 'left to right';
+        }
+        else if (lang.dir == 'rtl') {
+          lang.dir = 'right to left';
+        }
+      });
+
       this.languageList = this.sortingPipe.transform(this.languageList, 'name', 'code');
     });
 
