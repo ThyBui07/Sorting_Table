@@ -1,20 +1,17 @@
 import { Component, OnInit } from '@angular/core';
 import { LanguageService } from 'src/app/services/language.service';
-import { SearchingPipe } from 'src/app/pipes/searching.pipe';
 import { SortingPipe } from 'src/app/pipes/sort.pipe';
 
 @Component({
   selector: 'data-table-component',
   templateUrl: './data-table.component.html',
   styleUrls: ['./data-table.component.scss'],
-  providers: [SearchingPipe, SortingPipe]
 
 })
 export class DataTableComponent implements OnInit {
   languageList = [];
-  //search function
+  //search
   searchTerm: string;
-  searchRes: any =[];
   //sort
   isReverse: boolean = false;
   //pagination
@@ -25,15 +22,11 @@ export class DataTableComponent implements OnInit {
   constructor(public languageService: LanguageService, public sortingPipe: SortingPipe) {}
 
   ngOnInit() {
-    //subscribe search input from searchbar//language service
-    this.languageService.searchTerm$.subscribe(term => {
-      this.searchTerm = term;
-    });
     // subscribe api response from language service
     this.languageService.getLangList().subscribe(res => {
       this.languageList = res;
 
-      //change the writing-direction-code
+      //change writing direction code
       this.languageList.forEach(lang => {
         if (lang.dir == 'ltr') {
           lang.dir = 'left to right';
@@ -45,6 +38,16 @@ export class DataTableComponent implements OnInit {
 
       this.languageList = this.sortingPipe.transform(this.languageList, 'name', 'code');
     });
+
+     //subscribe search input from searchbar//language service
+     this.languageService.searchTerm$.subscribe(term => {
+      this.searchTerm = term;
+    });
+
+    //subscribe list after choose
+    this.languageService.languageList$.subscribe(res => {
+      this.languageList = res;
+    })
 
     //pagination
     this.config = {

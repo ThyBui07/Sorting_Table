@@ -40,7 +40,7 @@ import { SortingPipe } from './pipes/sort.pipe';
     SearchBoxComponent,
     DataTableComponent,
   ],
-  providers: [],
+  providers: [SearchingPipe, SortingPipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

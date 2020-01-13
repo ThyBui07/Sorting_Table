@@ -4,12 +4,12 @@ import { Pipe, PipeTransform } from '@angular/core';
   name: 'searching'
 })
 export class SearchingPipe implements PipeTransform {
-  transform(values: any[],input: any): any {
+  transform(values: any[],option: string): any {
     if(!values)return null;
-    if(!input)return values;
+    if(!option)return values;
 
     return values.filter(value => {
-      return JSON.stringify(value).toLowerCase().includes(input);
+      return JSON.stringify(value).toLowerCase().includes(option);
       });
   }
 }

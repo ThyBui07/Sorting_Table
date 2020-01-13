@@ -23,7 +23,7 @@ export class SearchBoxComponent implements OnInit {
   }
 
   onChange(selectedValue: string){
-    this.languageService.receiveAndSend(selectedValue);
+    this.languageService.filterOptions(selectedValue);
  }
 
 }
